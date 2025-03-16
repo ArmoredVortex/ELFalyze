@@ -1,0 +1,30 @@
+$primary-color: #4CAF50;
+
+body {
+    font-family: sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 2rem;
+}
+
+.upload-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+
+    h1 {
+        color: $primary-color;
+    }
+
+    button {
+        background-color: $primary-color;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+}

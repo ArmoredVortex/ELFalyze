@@ -1,0 +1,69 @@
+.result-container {
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    background-color: #1e1e2f;
+    color: #e0e0e0;
+    border-radius: 8px;
+    max-width: 100%;
+}
+
+.section {
+    margin-bottom: 2rem;
+
+    .section-title {
+        color: #ffca28;
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.codeblock-wrapper {
+    background-color: #282c34;
+    border-radius: 6px;
+    overflow-x: auto;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.codeblock {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre;
+}
+
+.hex {
+    color: #f1fa8c;
+}
+
+.hex-byte {
+    color: #f1fa8c;
+}
+
+.section-number {
+    color: #c678dd;
+    font-weight: bold;
+}
+
+.section-name {
+    color: #61afef;
+    font-weight: bold;
+}
+
+.register {
+    color: #98c379;
+}
+
+.mnemonic {
+    color: #e06c75;
+    font-weight: bold;
+}
+
+.number {
+    color: #f1fa8c;
+}
+
+.no-data {
+    padding: 1rem;
+    color: #888;
+    font-style: italic;
+}
