@@ -1,9 +1,7 @@
 .upload-container {
     // width: 100%;
     min-height: 100vh;
-    padding: 2rem;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,12 +11,16 @@
 
 .inner-wrapper {
     width: 90%;
-    max-width: 1000%;
+    max-width: 90%;
     padding: 2rem;
     background: #1a1a1a;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(128, 0, 255, 0.4);
     min-height: 80vh;
+    display: flex;
+    // justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -58,6 +60,144 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 90%;
     margin-bottom: 2rem;
+}
+
+.big-title {
+    width: 100%;
+    font-size: 4rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    /* Light solid color for "alyze" */
+    animation: fadeInUp 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.gradient-text {
+    background: linear-gradient(270deg, #38bdf8, #6366f1, #ec4899, #38bdf8);
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hero-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.big-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #f1f5f9;
+    animation: fadeInUp 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.gradient-text {
+    background: linear-gradient(270deg, #38bdf8, #6366f1, #ec4899, #38bdf8);
+    background-size: 800% 800%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 6s ease infinite;
+}
+
+.upload-wrapper {
+    border: 2px dashed #6366f1;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    background-color: #1d122b;
+
+    &:hover {
+        background-color: #334155;
+        border-color: #6366f1;
+    }
+
+    &.drag-active {
+        background-color: #475569;
+        border-color: #ec4899;
+    }
+
+    .upload-text {
+        font-size: 1.2rem;
+        color: #f1f5f9;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #f1f5f9;
+        background: linear-gradient(90deg, #38bdf8, #6366f1);
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        &:hover:not(:disabled) {
+            opacity: 0.9;
+        }
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
