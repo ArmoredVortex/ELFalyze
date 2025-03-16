@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AnalysisResult.scss";
 
 const highlightText = (text) => {
   if (!text) return "";
+  text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  // Highlight anything inside &lt;...&gt; as function name
+  text = text.replace(
+    /&lt;([^&]+)&gt;/g,
+    (match, p1) => `<span class="function-name">&lt;${p1}&gt;</span>`
+  );
 
   // Match long hex values (addresses, offsets, etc.)
   text = text.replace(
@@ -16,11 +23,16 @@ const highlightText = (text) => {
     (match) => `<span class="hex-byte">${match}</span>`
   );
 
-  // Section headers like [10] .rela.dyn
+  // Highlight brackets [ and ]
   text = text.replace(
-    /^(\s*\[\s*\d+\s*\])\s+([.\w]+)/gm,
-    (match, p1, p2) =>
-      `<span class="section-number">${p1}</span> <span class="section-name">${p2}</span>`
+    /([\[\]])/g,
+    (match) => `<span class="bracket">${match}</span>`
+  );
+
+  // Section headers like .rela.dyn
+  text = text.replace(
+    /(\.[\w.]+)/g,
+    (match) => `<span class="section-name">${match}</span>`
   );
 
   // Registers
@@ -56,19 +68,45 @@ const AnalysisResult = ({ data }) => {
     { title: "Disassembly", content: data.disassembly },
   ];
 
+  const [collapsed, setCollapsed] = useState(
+    Array(sections.length).fill(false)
+  );
+
+  const toggleCollapse = (index) => {
+    setCollapsed((prev) => prev.map((val, i) => (i === index ? !val : val)));
+  };
+
+  const copyToClipboard = (content) => {
+    navigator.clipboard.writeText(content).then(() => {
+      alert("Copied to clipboard!");
+    });
+  };
+
   return (
     <div className="result-container">
       {sections.map((section, idx) => (
         <div key={idx} className="section">
-          <h2 className="section-title">{section.title}</h2>
-          <div className="codeblock-wrapper">
-            <pre
-              className="codeblock"
-              dangerouslySetInnerHTML={{
-                __html: highlightText(section.content),
-              }}
-            />
+          <div className="section-header">
+            <h2 className="section-title">{section.title}</h2>
+            <div className="section-controls">
+              <button onClick={() => toggleCollapse(idx)}>
+                {collapsed[idx] ? "Expand" : "Collapse"}
+              </button>
+              <button onClick={() => copyToClipboard(section.content)}>
+                Copy
+              </button>
+            </div>
           </div>
+          {!collapsed[idx] && (
+            <div className="codeblock-wrapper">
+              <pre
+                className="codeblock"
+                dangerouslySetInnerHTML={{
+                  __html: highlightText(section.content),
+                }}
+              />
+            </div>
+          )}
         </div>
       ))}
     </div>

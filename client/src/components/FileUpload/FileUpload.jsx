@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import AnalysisResult from "../AnalysisResult/AnalysisResult";
+import "./FileUpload.scss";
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
@@ -38,13 +39,16 @@ const FileUpload = () => {
 
   return (
     <div className="upload-container">
-      <h1>ELFalyze - Analyze ELF Binaries</h1>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload} disabled={loading}>
-        {loading ? "Analyzing..." : "Upload & Analyze"}
-      </button>
-
-      {result && <AnalysisResult data={result} />}
+      <div className="inner-wrapper">
+        <h1>ELFalyze - Analyze ELF Binaries</h1>
+        <div className="upload-wrapper">
+          <input type="file" onChange={handleFileChange} />
+          <button onClick={handleUpload} disabled={loading}>
+            {loading ? "Analyzing..." : "Upload & Analyze"}
+          </button>
+        </div>
+        {result && <AnalysisResult data={result} />}
+      </div>
     </div>
   );
 };

@@ -1,69 +1,91 @@
 .result-container {
-    padding: 1rem;
-    font-family: 'Fira Code', monospace;
-    background-color: #1e1e2f;
-    color: #e0e0e0;
-    border-radius: 8px;
+    // width: 100%;
     max-width: 100%;
+    margin-top: 2rem;
+    background: #121212;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(140, 0, 255, 0.4);
+    color: #f5f5f5;
 }
 
 .section {
     margin-bottom: 2rem;
+}
 
-    .section-title {
-        color: #ffca28;
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a1a;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #d4bfff;
+}
+
+.section-controls button {
+    margin-left: 1rem;
+    background-color: #5e00ff;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #7d29ff;
     }
 }
 
 .codeblock-wrapper {
-    background-color: #282c34;
+    background: #0d0d0d;
     border-radius: 6px;
     overflow-x: auto;
-    padding: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .codeblock {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    white-space: pre;
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #e5e5e5;
 }
 
+// Syntax highlights
 .hex {
-    color: #f1fa8c;
+    color: #ffcc00;
 }
 
 .hex-byte {
-    color: #f1fa8c;
+    color: #ffee99;
 }
 
-.section-number {
-    color: #c678dd;
-    font-weight: bold;
+.bracket {
+    color: #66ccff;
 }
 
 .section-name {
-    color: #61afef;
-    font-weight: bold;
+    color: #ff99cc;
+}
+
+.function-name {
+    color: #00ffcc;
 }
 
 .register {
-    color: #98c379;
+    color: #ff6666;
 }
 
 .mnemonic {
-    color: #e06c75;
-    font-weight: bold;
+    color: #99ccff;
 }
 
 .number {
-    color: #f1fa8c;
-}
-
-.no-data {
-    padding: 1rem;
-    color: #888;
-    font-style: italic;
+    color: #d4bfff;
 }
